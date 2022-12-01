@@ -44,6 +44,7 @@ class _DiceScreenState extends State<DiceScreen> {
             children: [
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   // Image
                   Image.asset(
@@ -57,6 +58,7 @@ class _DiceScreenState extends State<DiceScreen> {
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(
                     'lib/assets/dice$_counter2.png',

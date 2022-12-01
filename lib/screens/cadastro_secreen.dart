@@ -2,15 +2,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'cadastro_secreen.dart';
 import 'components/ronded_button.dart';
 import 'components/rounded_text_field.dart';
 import 'menu_screen.dart';
 
-class LoginScreen extends StatelessWidget {
-  static const String id = 'login';
+// ignore: must_be_immutable
+class CadastroScreen extends StatelessWidget {
+  static const String id = 'cadastro';
 
-  LoginScreen({super.key});
+  CadastroScreen({super.key});
 
   String email = '';
   String password = '';
@@ -37,6 +37,19 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 32),
+              Text(
+                'Esse App vai te ajudar a organizar suas receitas, entregas, '
+                'lista de produtos disponíveis, contato de clientes, '
+                'tudo num só lugar!!!',
+                maxLines: 4,
+                overflow: TextOverflow.ellipsis,
+                style: GoogleFonts.pacifico(
+                  fontSize: 20,
+                  color: Color.fromARGB(255, 14, 24, 215),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 32),
               RoundedTextField(
                 text: 'Email',
                 onChanged: (value) => email = value,
@@ -49,25 +62,8 @@ class LoginScreen extends StatelessWidget {
               ),
               const SizedBox(height: 64),
               RoundedButton(
-                text: 'Login',
-                onPressed: () => authenticateUser(context),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                'Ou...',
-                style: GoogleFonts.pacifico(
-                  fontSize: 23,
-                  color: Color.fromARGB(255, 14, 24, 215),
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 16),
-              RoundedButton(
                 text: 'Cadastrar',
-                onPressed: () => Navigator.pushReplacementNamed(
-                  context,
-                  CadastroScreen.id,
-                ),
+                onPressed: () => authenticateUser(context),
               )
             ],
           ),
@@ -78,7 +74,7 @@ class LoginScreen extends StatelessWidget {
 
   void authenticateUser(BuildContext context) async {
     FirebaseAuth.instance
-        .signInWithEmailAndPassword(
+        .createUserWithEmailAndPassword(
       email: email,
       password: password,
     )

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:random_dados/screens/cadastro_secreen.dart';
 import 'package:random_dados/screens/produto_screen.dart';
 
 import 'firebase_options.dart';
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
         //           as QuizCompleteArguments,
         //     ),
         ProdutoScreen.id: (context) => ProdutoScreen(),
+        CadastroScreen.id: (context) => CadastroScreen(),
       },
     );
   }

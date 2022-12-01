@@ -46,7 +46,7 @@ class MenuScreen extends StatelessWidget {
               // ),
               const SizedBox(height: 16),
               RoundedButton(
-                text: 'Dado',
+                text: 'Desestresse',
                 onPressed: () {
                   Navigator.pushNamed(
                     context,
