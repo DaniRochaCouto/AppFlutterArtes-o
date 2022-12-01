@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:random_dados/screens/produto_screen.dart';
 
 import 'firebase_options.dart';
 import 'package:random_dados/screens/dice_screen.dart';
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
         //       arguments: ModalRoute.of(context)!.settings.arguments
         //           as QuizCompleteArguments,
         //     ),
-        // MoviesScreen.id: (context) => MoviesScreen(),
+        ProdutoScreen.id: (context) => ProdutoScreen(),
       },
     );
   }

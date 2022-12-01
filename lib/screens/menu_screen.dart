@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:random_dados/screens/produto_screen.dart';
 
 import 'components/ronded_button.dart';
 import 'dice_screen.dart';
@@ -63,16 +64,16 @@ class MenuScreen extends StatelessWidget {
               //     );
               //   },
               // ),
-              // const SizedBox(height: 16),
-              // RoundedButton(
-              //   text: 'Lista de filmes',
-              //   onPressed: () {
-              //     Navigator.pushNamed(
-              //       context,
-              //       MoviesScreen.id,
-              //     );
-              //   },
-              // ),
+              const SizedBox(height: 16),
+              RoundedButton(
+                text: 'Lista de Produtos',
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    ProdutoScreen.id,
+                  );
+                },
+              ),
               const SizedBox(height: 16),
               RoundedButton(
                 text: 'Sair',
