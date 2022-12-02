@@ -44,9 +44,28 @@ class MenuScreen extends StatelessWidget {
               //         ));
               //   },
               // ),
+              RoundedButton(
+                text: 'Entregas',
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    DiceScreen.id,
+                  );
+                },
+              ),
               const SizedBox(height: 16),
               RoundedButton(
-                text: 'Desestresse',
+                text: 'Receitas',
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    DiceScreen.id,
+                  );
+                },
+              ),
+              const SizedBox(height: 16),
+              RoundedButton(
+                text: 'Clientes',
                 onPressed: () {
                   Navigator.pushNamed(
                     context,
@@ -71,6 +90,16 @@ class MenuScreen extends StatelessWidget {
                   Navigator.pushNamed(
                     context,
                     ProdutoScreen.id,
+                  );
+                },
+              ),
+              const SizedBox(height: 16),
+              RoundedButton(
+                text: 'Desestresse',
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    DiceScreen.id,
                   );
                 },
               ),

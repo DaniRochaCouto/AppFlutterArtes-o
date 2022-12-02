@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 
 import '../main.dart';
 import 'dice_screen.dart';
+import 'inicio_screen.dart';
 import 'login_screen.dart';
 import 'menu_screen.dart';
 
@@ -25,7 +26,7 @@ class _SplashState extends State<SplashScreen> {
       if (FirebaseAuth.instance.currentUser != null) {
         Navigator.pushReplacementNamed(context, MenuScreen.id);
       } else {
-        Navigator.pushReplacementNamed(context, LoginScreen.id);
+        Navigator.pushReplacementNamed(context, InicioScreen.id);
       }
     });
   }

@@ -52,23 +52,6 @@ class LoginScreen extends StatelessWidget {
                 text: 'Login',
                 onPressed: () => authenticateUser(context),
               ),
-              const SizedBox(height: 16),
-              Text(
-                'Ou...',
-                style: GoogleFonts.pacifico(
-                  fontSize: 23,
-                  color: Color.fromARGB(255, 14, 24, 215),
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 16),
-              RoundedButton(
-                text: 'Cadastrar',
-                onPressed: () => Navigator.pushReplacementNamed(
-                  context,
-                  CadastroScreen.id,
-                ),
-              )
             ],
           ),
         ),

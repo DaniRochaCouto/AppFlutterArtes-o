@@ -37,19 +37,6 @@ class CadastroScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 32),
-              Text(
-                'Esse App vai te ajudar a organizar suas receitas, entregas, '
-                'lista de produtos disponíveis, contato de clientes, '
-                'tudo num só lugar!!!',
-                maxLines: 4,
-                overflow: TextOverflow.ellipsis,
-                style: GoogleFonts.pacifico(
-                  fontSize: 20,
-                  color: Color.fromARGB(255, 14, 24, 215),
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 32),
               RoundedTextField(
                 text: 'Email',
                 onChanged: (value) => email = value,
