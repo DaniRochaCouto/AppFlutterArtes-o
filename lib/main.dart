@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:random_dados/screens/cadastro_secreen.dart';
+import 'package:random_dados/screens/cliente_form_screen.dart';
+import 'package:random_dados/screens/contact_form_screen.dart';
 import 'package:random_dados/screens/inicio_screen.dart';
 import 'package:random_dados/screens/produto_screen.dart';
 
@@ -34,6 +36,7 @@ class MyApp extends StatelessWidget {
       initialRoute: SplashScreen.id,
       routes: {
         LoginScreen.id: (context) => LoginScreen(),
+        ContactFormScreen.id: (context) => ContactFormScreen(),
         SplashScreen.id: (context) => SplashScreen(),
         MenuScreen.id: (context) => MenuScreen(),
         // PersonalCardScreen.id: (context) => PersonalCardScreen(
@@ -49,6 +52,7 @@ class MyApp extends StatelessWidget {
         ProdutoScreen.id: (context) => ProdutoScreen(),
         CadastroScreen.id: (context) => CadastroScreen(),
         InicioScreen.id: (context) => InicioScreen(),
+        ClienteFormScreen.id: (context) => ClienteFormScreen(),
       },
     );
   }
