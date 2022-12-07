@@ -1,24 +1,33 @@
-import 'package:bytebank/database/dao/contact_dao.dart';
-import 'package:bytebank/models/contact.dart';
-import 'package:bytebank/screens/contact_form.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:random_dados/database/dao/contact_dao.dart';
+import 'package:random_dados/models/contact.dart';
+import 'package:random_dados/screens/contact_form_screen.dart';
 
 class ContactsList extends StatefulWidget {
+  static const String id = 'clientelist';
+
+  // ignore: prefer_const_constructors_in_immutables
+  ContactsList({super.key});
   @override
+  // ignore: library_private_types_in_public_api
   _ContactsListState createState() => _ContactsListState();
 }
 
 class _ContactsListState extends State<ContactsList> {
   final ContactDao _dao = ContactDao();
+  List<Contact> _contactsList = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // ignore: prefer_const_constructors
         title: Text('Contacts'),
       ),
       body: FutureBuilder<List<Contact>>(
-        initialData: List(),
+        // ignore: deprecated_member_use
+        initialData: _contactsList,
         future: _dao.findAll(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
@@ -39,13 +48,17 @@ class _ContactsListState extends State<ContactsList> {
             case ConnectionState.active:
               break;
             case ConnectionState.done:
-              final List<Contact> contacts = snapshot.data;
+              print("conection done");
+              print(snapshot);
+              _contactsList = snapshot.data!;
+              //snapshot.data!.docs.map((DocumentSnapshot document) {
+              //Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  final Contact contact = contacts[index];
+                  final Contact contact = _contactsList[index];
                   return _ContactItem(contact);
                 },
-                itemCount: contacts.length,
+                itemCount: _contactsList.length,
               );
               break;
           }
@@ -57,13 +70,15 @@ class _ContactsListState extends State<ContactsList> {
           Navigator.of(context)
               .push(
                 MaterialPageRoute(
-                  builder: (context) => ContactForm(),
+                  // ignore: prefer_const_constructors
+                  builder: (context) => ContactFormScreen(),
                 ),
               )
               .then(
                 (value) => setState(() {}),
               );
         },
+        // ignore: prefer_const_constructors
         child: Icon(
           Icons.add,
         ),
@@ -88,12 +103,26 @@ class _ContactItem extends StatelessWidget {
           ),
         ),
         subtitle: Text(
-          contact.accountNumber.toString(),
+          contact.tellNumber.toString(),
           style: TextStyle(
             fontSize: 16.0,
           ),
         ),
+        onTap: () => {
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  // ignore: prefer_const_constructors
+                  builder: (context) => ContactFormScreen(),
+                ),
+              )
+              .then(
+                (value) => setState(() {}),
+              )
+        },
       ),
     );
   }
+
+  setState(Null Function() param0) {}
 }

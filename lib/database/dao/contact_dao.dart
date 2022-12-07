@@ -26,43 +26,40 @@ class ContactDao {
     Map<String, dynamic> contactMap = _toMap(contact);
     // ignore: avoid_print
     print(contactMap);
-    //ref.set(contactMap);
-    //db
-    //.collection("cliente")
+
     return cliente
         .add(contactMap)
         .then((DocumentReference doc) =>
             // ignore: avoid_print
             print('DocumentSnapshot added with ID: ${doc.id}'))
-        // return cliente
-        //     .add({
-        //       'name': contact.name, // Stokes and Sons
-        //       'tellNumber': contact.tellNumber // 42
-        //     })
-        //     //   .add(contact)
-        //     .then((value) => print("Client Added"))
-        // ignore: avoid_print
         .catchError((error) => print("Failed to add user: $error"));
   }
-  // Future<int> save(Contact contact) async {
-  //   final Database db = await getDatabase();
-  //   Map<String, dynamic> contactMap = _toMap(contact);
-  //   return db.insert(_tableName, contactMap);
-  // }
 
   Future<List<Contact>> findAll() async {
-    List<Map<String, dynamic>> result = [];
-    await db.collection("cliente").get().then((event) {
-      for (var doc in event.docs) {
-        result = doc as List<Map<String, dynamic>>;
-        print("${doc.id} => ${doc.data()}");
-      }
+    List<Contact> result = [];
+
+    QuerySnapshot query = await db.collection("cliente").get();
+    query.docs.forEach((element) {
+      String name = element.get("name");
+      String tellNumber = element.get("tell_number");
+      final Contact newContact = Contact(name, tellNumber);
+      print(element.data());
+      result.add(newContact);
     });
-    //   final Database db = await getDatabase();
-    //final List<Map<String, dynamic>> result = await db.query(_tableName);
-    List<Contact> contacts = _toList(result);
-    return contacts;
+    return result;
   }
+  // .then((event) {
+  //   for (var doc in event.docs) {
+  //     // ignore: avoid_print
+  //     print("${doc.id} => ${doc.data()}");
+  //     //result = doc as List<Map<String, dynamic>>;
+  //     result.add;
+  //   }
+  //  });
+  //   final Database db = await getDatabase();
+  //final List<Map<String, dynamic>> result = await db.query(_tableName);
+  //List<Contact> contacts = _toList(result);
+  //return contacts;
 
   Map<String, dynamic> _toMap(Contact contact) {
     final Map<String, dynamic> contactMap = Map();

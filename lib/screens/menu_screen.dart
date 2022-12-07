@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:random_dados/screens/cliente_form_screen.dart';
 import 'package:random_dados/screens/contact_form_screen.dart';
+import 'package:random_dados/screens/contacts_list_screen.dart';
 import 'package:random_dados/screens/produto_screen.dart';
 
 import 'components/ronded_button.dart';
@@ -72,7 +73,7 @@ class MenuScreen extends StatelessWidget {
                   Navigator.pushNamed(
                     context,
                     // ignore: prefer_const_constructors
-                    ClienteFormScreen.id,
+                    ContactsList.id,
                   );
                 },
               ),

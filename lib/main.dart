@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:random_dados/screens/cadastro_secreen.dart';
 import 'package:random_dados/screens/cliente_form_screen.dart';
 import 'package:random_dados/screens/contact_form_screen.dart';
+import 'package:random_dados/screens/contacts_list_screen.dart';
 import 'package:random_dados/screens/inicio_screen.dart';
 import 'package:random_dados/screens/produto_screen.dart';
 
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
       routes: {
         LoginScreen.id: (context) => LoginScreen(),
         ContactFormScreen.id: (context) => ContactFormScreen(),
+        ContactsList.id: (context) => ContactsList(),
         SplashScreen.id: (context) => SplashScreen(),
         MenuScreen.id: (context) => MenuScreen(),
         // PersonalCardScreen.id: (context) => PersonalCardScreen(

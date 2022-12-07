@@ -47,30 +47,29 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAK7MAPchFkef3mosGNwq_DSjnvMS34i_8',
-    appId: '1:603752801028:web:7740dd6d3650c0e2242651',
-    messagingSenderId: '603752801028',
-    projectId: 'appflutter-76609',
-    authDomain: 'appflutter-76609.firebaseapp.com',
-    storageBucket: 'appflutter-76609.appspot.com',
-    measurementId: 'G-S30PRFV293',
+    apiKey: 'AIzaSyCG66wX_rlJG5YdhKNjVq_bGYxIbbQC1OI',
+    appId: '1:289133575243:web:073a42db46deb80e6ea1ce',
+    messagingSenderId: '289133575243',
+    projectId: 'clienteart-18f39',
+    authDomain: 'clienteart-18f39.firebaseapp.com',
+    storageBucket: 'clienteart-18f39.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDddNZfm-2rKk1urLuciTnZfOUs4AuKTQY',
-    appId: '1:603752801028:android:d13bfa5be159c144242651',
-    messagingSenderId: '603752801028',
-    projectId: 'appflutter-76609',
-    storageBucket: 'appflutter-76609.appspot.com',
+    apiKey: 'AIzaSyCLvbEJpzygnexTWkPTCj7V3xkXsmIxT3c',
+    appId: '1:289133575243:android:b8e863063c15af8d6ea1ce',
+    messagingSenderId: '289133575243',
+    projectId: 'clienteart-18f39',
+    storageBucket: 'clienteart-18f39.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBrdyq1oTMNC38vyB2bE7jVxdeRspJJMZc',
-    appId: '1:603752801028:ios:00251dc749bf3e70242651',
-    messagingSenderId: '603752801028',
-    projectId: 'appflutter-76609',
-    storageBucket: 'appflutter-76609.appspot.com',
-    iosClientId: '603752801028-d9d3kfvcqe5bt5ka5t8m50pnk1iifarq.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBCNiDOrGlUOxtha_IMDD28TFESQNto4k0',
+    appId: '1:289133575243:ios:2712ca8df2359d4d6ea1ce',
+    messagingSenderId: '289133575243',
+    projectId: 'clienteart-18f39',
+    storageBucket: 'clienteart-18f39.appspot.com',
+    iosClientId: '289133575243-u5jbe8k1fl1nr7lq4345dvb7sroepbck.apps.googleusercontent.com',
     iosBundleId: 'com.example.randomDados',
   );
 }
