@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# AppFlutterArtes-o
-App para o artesão gerenciar suas receitas, produtos, link para loja...
-=======
 # random_dados
 
 A new Flutter project.
@@ -18,4 +14,3 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
->>>>>>> d95d526 (commit inicial tela splash, login, menu e dado)

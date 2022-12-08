@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:random_dados/database/dao/contact_dao.dart';
 import 'package:random_dados/models/contact.dart';
+import 'package:uuid/uuid.dart';
 
 class ContactFormScreen extends StatefulWidget {
   static const String id = 'contactformscreen';
@@ -56,9 +57,13 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
                   // ignore: prefer_const_constructors
                   child: Text('Create'),
                   onPressed: () {
+                    final String idContact = const Uuid().v1();
+                    print('Uuid= $idContact');
+
                     final String name = _nameController.text;
                     final String tellNumber = _tellNumberController.text;
-                    final Contact newContact = Contact(name, tellNumber);
+                    final Contact newContact =
+                        Contact(idContact, name, tellNumber);
                     // ignore: avoid_print
                     print('nome: $name');
                     _dao.save(newContact);

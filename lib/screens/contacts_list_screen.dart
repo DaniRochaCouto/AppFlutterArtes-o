@@ -50,7 +50,10 @@ class _ContactsListState extends State<ContactsList> {
             case ConnectionState.done:
               print("conection done");
               print(snapshot);
+              Stream<List<Contact>> ListStream = _dao.findAll().asStream();
               _contactsList = snapshot.data!;
+              //_contactsList = snapshot.
+              //print(ListStream);
               //snapshot.data!.docs.map((DocumentSnapshot document) {
               //Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
               return ListView.builder(

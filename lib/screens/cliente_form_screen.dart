@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:random_dados/database/dao/contact_dao.dart';
 import 'package:random_dados/models/contact.dart';
+import 'package:uuid/uuid.dart';
 
 import 'cadastro_secreen.dart';
 import 'components/ronded_button.dart';
@@ -57,7 +58,11 @@ class ClienteFormScreen extends StatelessWidget {
               RoundedButton(
                   text: 'Salvar',
                   onPressed: () {
-                    final Contact newContact = Contact(name, tellNumber);
+                    final String idContact = const Uuid().v1();
+                    print('Uuid= $idContact');
+
+                    final Contact newContact =
+                        Contact(idContact, name, tellNumber);
                     print('nome: $newContact');
                     _dao.save(newContact).then((id) => Navigator.pop(context));
                   }),
