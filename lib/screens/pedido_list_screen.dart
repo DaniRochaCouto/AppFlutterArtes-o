@@ -1,34 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:random_dados/database/dao/contact_dao.dart';
+import 'package:random_dados/database/dao/pedido_dao.dart';
 import 'package:random_dados/models/contact.dart';
+import 'package:random_dados/models/pedido.dart';
 import 'package:random_dados/screens/cliente_form_screen.dart';
 import 'package:random_dados/screens/contact_form_screen.dart';
+import 'package:random_dados/screens/detalha_pedido_screen.dart';
+import 'package:random_dados/screens/pedido_form_screen.dart';
 
-class ContactsList extends StatefulWidget {
-  static const String id = 'clientelist';
+class PedidoList extends StatefulWidget {
+  static const String id = 'pedidolist';
 
   // ignore: prefer_const_constructors_in_immutables
-  ContactsList({super.key});
+  PedidoList({super.key});
   @override
   // ignore: library_private_types_in_public_api
-  _ContactsListState createState() => _ContactsListState();
+  _PedidoListState createState() => _PedidoListState();
 }
 
-class _ContactsListState extends State<ContactsList> {
-  final ContactDao _dao = ContactDao();
-  List<Contact> _contactsList = [];
+class _PedidoListState extends State<PedidoList> {
+  final PedidoDao _dao = PedidoDao();
+  List<Pedido> _pedidoList = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         // ignore: prefer_const_constructors
-        title: Text('Clientes'),
+        title: Text('Pedidos'),
       ),
-      body: FutureBuilder<List<Contact>>(
+      body: FutureBuilder<List<Pedido>>(
         // ignore: deprecated_member_use
-        initialData: _contactsList,
+        initialData: _pedidoList,
         future: _dao.findAll(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
@@ -51,76 +55,57 @@ class _ContactsListState extends State<ContactsList> {
             case ConnectionState.done:
               print("conection done");
               print(snapshot);
-              Stream<List<Contact>> ListStream = _dao.findAll().asStream();
-              _contactsList = snapshot.data!;
+              Stream<List<Pedido>> ListStream = _dao.findAll().asStream();
+              _pedidoList = snapshot.data!;
               //_contactsList = snapshot.
               //print(ListStream);
               //snapshot.data!.docs.map((DocumentSnapshot document) {
               //Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  final Contact contact = _contactsList[index];
-                  return _ContactItem(contact);
+                  final Pedido pedido = _pedidoList[index];
+                  return _PedidoItem(pedido);
                 },
-                itemCount: _contactsList.length,
+                itemCount: _pedidoList.length,
               );
               break;
           }
           return Text('Unknown error');
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context)
-              .push(
-                MaterialPageRoute(
-                  // ignore: prefer_const_constructors
-                  builder: (context) => ContactFormScreen(),
-                ),
-              )
-              .then(
-                (value) => setState(() {}),
-              );
-        },
-        // ignore: prefer_const_constructors
-        child: Icon(
-          Icons.add,
-        ),
-      ),
     );
   }
 }
 
-class _ContactItem extends StatelessWidget {
-  final Contact contact;
+class _PedidoItem extends StatelessWidget {
+  final Pedido pedido;
 
-  _ContactItem(this.contact);
+  _PedidoItem(this.pedido);
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
         title: Text(
-          contact.name,
+          pedido.descricao,
           style: TextStyle(
             fontSize: 24.0,
           ),
         ),
         subtitle: Text(
-          contact.tellNumber.toString(),
+          'Cliente: ${pedido.nameCliente}, data de entrega: ${pedido.dataEntrega}',
           style: TextStyle(
             fontSize: 16.0,
           ),
         ),
         onTap: () => {
-          Navigator.pushNamed(context, ClienteFormScreen.id,
-              arguments: ClienteFormScreenArguments(
-                idCliente: contact.idCliente,
-                name: contact.name,
-                tellNumber: contact.tellNumber,
-                // idCliente: "dani",
-                // name: "dani",
-                // tellNumber: "26726826",
+          Navigator.pushNamed(context, DetalhaPedidoScreen.id,
+              arguments: DetalhaPedidoScreenArguments(
+                descricao: pedido.descricao,
+                data: pedido.dataEntrega,
+                idPedido: pedido.idPedido,
+                idCliente: pedido.idCliente,
+                nameCliente: pedido.nameCliente,
               )).then(
             (value) => setState(() {}),
           )

@@ -18,60 +18,54 @@ class _ProdutoScreenState extends State<ProdutoScreen> {
   // ignore: override_on_non_overriding_member
   bool opacidade = true;
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Lista de Produtos'),
+        // ignore: prefer_const_constructors
+        //leading: Icon(Icons.precision_manufacturing),
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Lista de Produtos'),
-          // ignore: prefer_const_constructors
-          leading: Icon(Icons.precision_manufacturing),
-        ),
-        body: AnimatedOpacity(
-          opacity: opacidade ? 1.0 : 0.0,
-          duration: const Duration(milliseconds: 500),
-          child: Container(
-            color: const Color.fromARGB(255, 208, 221, 237),
-            child: ListView(
-              children: const [
-                Padding(
-                  //aula 5.4
-                  padding: EdgeInsets.only(top: 8),
-                  child: Tasks(
-                      'Elefante amigurumi',
-                      'lib/assets/elefante.jpeg',
-                      3,
-                      'Lindo demais com 30 cm de altura lindo',
-                      'Preço: 100,00 '),
-                ),
-                Tasks('Gola Tricot', 'lib/assets/golarosa.jpg', 5,
-                    'Gola bem quentinha rosa', 'Preço: 70,00'),
-                Tasks('Pinguim amigurumi', 'lib/assets/pinguim.jpg', 3,
-                    'Lindo pinguim de 30 cm de altura', 'Preço: 80,00 '),
-                Tasks('Boneca amigurumi', 'lib/assets/boneca.jpg', 4,
-                    'Boneca de 17 cm de altura', 'Preço: 130,00 '),
-                Tasks('Cachecol com bolso', 'lib/assets/cachecol.jpg', 5,
-                    'Cachecol com bolso', 'Preço: 100,00 '),
-                Tasks('Cachorrinho amigurumi', 'lib/assets/cao.jpg', 4,
-                    'Cachorrinho mini, 10 cm', '30 reais'),
-                SizedBox(
-                  height: 80,
-                ),
-              ],
-            ),
+      body: AnimatedOpacity(
+        opacity: opacidade ? 1.0 : 0.8,
+        duration: const Duration(milliseconds: 500),
+        child: Container(
+          color: const Color.fromARGB(255, 208, 221, 237),
+          child: ListView(
+            children: const [
+              Padding(
+                //aula 5.4
+                padding: EdgeInsets.only(top: 8),
+                child: Tasks(
+                    'Elefante amigurumi',
+                    'lib/assets/elefante.jpeg',
+                    3,
+                    'Lindo demais com 30 cm de altura lindo',
+                    'Preço: 100,00 '),
+              ),
+              Tasks('Gola Tricot', 'lib/assets/golarosa.jpg', 5,
+                  'Gola bem quentinha rosa', 'Preço: 70,00'),
+              Tasks('Pinguim amigurumi', 'lib/assets/pinguim.jpg', 3,
+                  'Lindo pinguim de 30 cm de altura', 'Preço: 80,00 '),
+              Tasks('Boneca amigurumi', 'lib/assets/boneca.jpg', 4,
+                  'Boneca de 17 cm de altura', 'Preço: 130,00 '),
+              Tasks('Cachecol com bolso', 'lib/assets/cachecol.jpg', 5,
+                  'Cachecol com bolso', 'Preço: 100,00 '),
+              Tasks('Cachorrinho amigurumi', 'lib/assets/cao.jpg', 4,
+                  'Cachorrinho mini, 10 cm', '30 reais'),
+              SizedBox(
+                height: 80,
+              ),
+            ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              opacidade = !opacidade;
-            });
-          },
-          backgroundColor: Colors.blue[100],
-          child: const Icon(Icons.add),
-        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            opacidade = !opacidade;
+          });
+        },
+        backgroundColor: Colors.blue[100],
+        child: const Icon(Icons.add),
       ),
     );
   }

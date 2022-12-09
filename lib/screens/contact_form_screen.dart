@@ -66,7 +66,7 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
                         Contact(idContact, name, tellNumber);
                     // ignore: avoid_print
                     print('nome: $name');
-                    _dao.save(newContact);
+                    _dao.save(newContact).then((id) => Navigator.pop(context));
                   },
                 ),
               ),

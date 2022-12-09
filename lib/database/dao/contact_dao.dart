@@ -46,6 +46,29 @@ class ContactDao {
     //     .catchError((error) => print("Failed to add user: $error"));
   }
 
+  Future<void> delete(Contact contact) {
+    // ignore: avoid_print
+    print('nome: $contact');
+    // Call the user's CollectionReference to add a new user
+    Map<String, dynamic> contactMap = _toMap(contact);
+    // ignore: avoid_print
+    //print(contactMap);
+    return cliente
+        .doc(contact.idCliente)
+        .delete()
+        .then((doc) =>
+            // ignore: avoid_print
+            print("DocumentSnapshot deletado with ID: $contact.idCliente"))
+        .catchError((error) => print("Failed to add user: $error"));
+
+    // return cliente
+    //     .add(contactMap)
+    //     .then((DocumentReference doc) =>
+    //         // ignore: avoid_print
+    //         print('DocumentSnapshot added with ID: ${doc.id}'))
+    //     .catchError((error) => print("Failed to add user: $error"));
+  }
+
   Future<List<Contact>> findAll() async {
     List<Contact> result = [];
 

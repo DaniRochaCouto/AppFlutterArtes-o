@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:random_dados/screens/cliente_form_screen.dart';
 import 'package:random_dados/screens/contact_form_screen.dart';
 import 'package:random_dados/screens/contacts_list_screen.dart';
+import 'package:random_dados/screens/pedido_list_screen.dart';
 import 'package:random_dados/screens/produto_screen.dart';
 
 import 'components/ronded_button.dart';
@@ -48,24 +49,24 @@ class MenuScreen extends StatelessWidget {
               //   },
               // ),
               RoundedButton(
-                text: 'Entregas',
+                text: 'Pedidos',
                 onPressed: () {
                   Navigator.pushNamed(
                     context,
-                    DiceScreen.id,
+                    PedidoList.id,
                   );
                 },
               ),
-              const SizedBox(height: 16),
-              RoundedButton(
-                text: 'Receitas',
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    DiceScreen.id,
-                  );
-                },
-              ),
+              // const SizedBox(height: 16),
+              // RoundedButton(
+              //   text: 'Receitas',
+              //   onPressed: () {
+              //     Navigator.pushNamed(
+              //       context,
+              //       DiceScreen.id,
+              //     );
+              //   },
+              // ),
               const SizedBox(height: 16),
               RoundedButton(
                 text: 'Clientes',
