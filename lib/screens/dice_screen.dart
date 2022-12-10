@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class DiceScreen extends StatefulWidget {
   static const String id = 'dice';
@@ -40,33 +41,50 @@ class _DiceScreenState extends State<DiceScreen> {
           child: const Icon(Icons.add),
         ),
         body: SafeArea(
-          child: Row(
+          child: Column(
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  // Image
-                  Image.asset(
-                    'lib/assets/dice$_counter1.png',
-                    width: 160,
-                    // height: 60,
-                    color: Colors.pinkAccent,
-                    fit: BoxFit.contain,
-                  ),
-                ],
+              const SizedBox(height: 40),
+              Text(
+                'Aperte o botão e tente acertar o valor!!',
+                style: GoogleFonts.pacifico(
+                  fontSize: 23,
+                  color: Color.fromARGB(255, 14, 24, 215),
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              const SizedBox(height: 40),
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    'lib/assets/dice$_counter2.png',
-                    width: 160,
-                    //height: 100,
-                    color: Colors.amberAccent,
-                    fit: BoxFit.contain,
-                    // style: Theme.of(context).textTheme.headline4,
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      // Image
+
+                      Image.asset(
+                        'lib/assets/dice$_counter1.png',
+                        width: 160,
+                        // height: 60,
+                        color: Colors.pinkAccent,
+                        fit: BoxFit.contain,
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'lib/assets/dice$_counter2.png',
+                        width: 160,
+                        //height: 100,
+                        color: Colors.amberAccent,
+                        fit: BoxFit.contain,
+                        // style: Theme.of(context).textTheme.headline4,
+                      ),
+                    ],
                   ),
                 ],
               ),

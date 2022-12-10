@@ -21,6 +21,10 @@ class ClienteFormScreen extends StatelessWidget {
     required this.arguments,
   }) : super(key: key);
 
+  var idContact = '';
+  var name = '';
+  var tellNumber = '';
+
   ClienteFormScreenArguments arguments;
 
   FirebaseFirestore db = FirebaseFirestore.instance;
@@ -28,126 +32,118 @@ class ClienteFormScreen extends StatelessWidget {
   CollectionReference cliente =
       FirebaseFirestore.instance.collection('cliente');
 
-  String tellNumber = '';
-
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _tellNumberController = TextEditingController();
   final ContactDao _dao = ContactDao();
 
   @override
   Widget build(BuildContext context) {
+    if (arguments.idCliente.isNotEmpty) {
+      idContact = arguments.idCliente;
+      name = arguments.name;
+      tellNumber = arguments.tellNumber;
+    }
     return Scaffold(
       appBar: AppBar(
-        title: Text('Reeditando o cliente'),
+        title: Text('Cadastro de cliente'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: <Widget>[
-            TextField(
-              controller: _nameController,
-              decoration: InputDecoration(
-                labelText: arguments.name,
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(50.0),
+          child: Column(
+            children: [
+              TextFormField(
+                initialValue: name,
+                decoration:
+                    const InputDecoration(label: Text("Nome do Cliente")),
+                onChanged: (value) => name = value,
               ),
-              style: TextStyle(
-                fontSize: 24.0,
+              TextFormField(
+                initialValue: tellNumber,
+                decoration: const InputDecoration(label: Text("Telefone")),
+                onChanged: (value) => tellNumber = value,
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: TextField(
-                controller: _tellNumberController,
-                decoration: InputDecoration(
-                  labelText: arguments.tellNumber,
+              const SizedBox(height: 32),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(100, 36),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(1000)),
+                  ),
                 ),
-                style: TextStyle(
-                  fontSize: 24.0,
-                ),
-                keyboardType: TextInputType.number,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16.0),
-              child: SizedBox(
-                width: double.maxFinite,
-                child: TextButton(
-                  // ignore: prefer_const_constructors
-                  child: Text('Salve os dados alterados'),
-                  onPressed: () {
-                    final String idContact = arguments.idCliente;
-
-                    final String name = _nameController.text;
-                    final String tellNumber = _tellNumberController.text;
-                    final Contact newContact =
-                        Contact(idContact, name, tellNumber);
-                    // ignore: avoid_print
-                    print('nome: $name');
-                    _dao.save(newContact).then((id) => Navigator.pushNamed(
-                          context,
-                          // ignore: prefer_const_constructors
-                          ContactsList.id,
-                        ));
-                  },
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16.0),
-              child: SizedBox(
-                width: double.maxFinite,
-                child: TextButton(
-                  // ignore: prefer_const_constructors
-                  child: Text('Delete o cliente'),
-                  onPressed: () {
-                    final String idContact = arguments.idCliente;
-
-                    final String name = _nameController.text;
-                    final String tellNumber = _tellNumberController.text;
-                    final Contact newContact =
-                        Contact(idContact, name, tellNumber);
-                    // ignore: avoid_print
-                    print('nome: $name');
-                    _dao.delete(newContact).then((id) => Navigator.pushNamed(
-                          context,
-                          // ignore: prefer_const_constructors
-                          MenuScreen.id,
-                        ));
-                  },
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16.0),
-              child: SizedBox(
-                width: double.maxFinite,
-                child: TextButton(
-                  // ignore: prefer_const_constructors
-                  child: Text('Insira uma pedido para o cliente'),
-                  onPressed: () {
-                    final String idContact = arguments.idCliente;
-
-                    final String name = arguments.name;
-                    final String tellNumber = _tellNumberController.text;
-                    final Contact newContact =
-                        Contact(idContact, name, tellNumber);
-                    // ignore: avoid_print
-                    print('nome: $name');
-                    Navigator.pushNamed(
+                onPressed: () {
+                  final Contact newContact =
+                      Contact(idContact, name, tellNumber);
+                  // ignore: avoid_print
+                  print('nome: $name');
+                  _dao.save(newContact).then((id) => Navigator.pushNamed(
                         context,
                         // ignore: prefer_const_constructors
-                        PedidoFormScreen.id,
-                        arguments: PedidoFormScreenArguments(
-                          idCliente: newContact.idCliente,
-                          nameCliente: newContact.name,
-                          // idCliente: "dani",
-                          // name: "dani",
-                          // tellNumber: "26726826",
-                        ));
-                  },
+                        ContactsList.id,
+                      ));
+                },
+                child: const Text(
+                  'Salvar',
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
                 ),
               ),
-            )
-          ],
+              const SizedBox(height: 32),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(100, 36),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(1000)),
+                  ),
+                ),
+                onPressed: () {
+                  final Contact newContact =
+                      Contact(idContact, name, tellNumber);
+                  // ignore: avoid_print
+                  print('nome: $name');
+                  _dao.delete(newContact).then((id) => Navigator.pushNamed(
+                        context,
+                        // ignore: prefer_const_constructors
+                        MenuScreen.id,
+                      ));
+                },
+                child: const Text(
+                  'Deletar',
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 32),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(100, 36),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(1000)),
+                  ),
+                ),
+                onPressed: () {
+                  final Contact newContact =
+                      Contact(idContact, name, tellNumber);
+                  // ignore: avoid_print
+                  // print('nome: $name');
+                  Navigator.pushNamed(
+                      context,
+                      // ignore: prefer_const_constructors
+                      PedidoFormScreen.id,
+                      arguments: PedidoFormScreenArguments(
+                        idCliente: newContact.idCliente,
+                        nameCliente: newContact.name,
+                      ));
+                },
+                child: const Text(
+                  'Novo Pedido para o Cliente',
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -162,56 +158,3 @@ class ClienteFormScreenArguments {
   String name;
   String tellNumber;
 }
-
-
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Cadastro de Clientes'),
-//       ),
-//       backgroundColor: Color.fromARGB(255, 13, 219, 237),
-//       body: SafeArea(
-//         child: Padding(
-//           padding: const EdgeInsets.all(16),
-//           child: Column(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: [
-//               Text(
-//                 'Insira os dados do novo cliente',
-//                 style: GoogleFonts.pacifico(
-//                   fontSize: 23,
-//                   color: Color.fromARGB(255, 14, 24, 215),
-//                   fontWeight: FontWeight.bold,
-//                 ),
-//               ),
-//               const SizedBox(height: 32),
-//               RoundedTextField(
-//                 text: 'Nome',
-//                 onChanged: (value) => arguments.name = value,
-//               ),
-//               const SizedBox(height: 32),
-//               RoundedTextField(
-//                 text: 'Telefone',
-//                 onChanged: (value) => arguments.tellNumber = value,
-//                 obscureText: false,
-//               ),
-//               const SizedBox(height: 64),
-//               RoundedButton(
-//                   text: 'Salvar',
-//                   onPressed: () {
-//                     final String idContact = arguments.idCliente;
-
-//                     final Contact newContact =
-//                         Contact(idContact, name, tellNumber);
-//                     //print('nome: $newContact');
-//                     _dao.save(newContact).then((id) => Navigator.pop(context));
-//                   }),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-
