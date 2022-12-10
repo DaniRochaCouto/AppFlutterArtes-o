@@ -29,9 +29,9 @@ Esse projeto está em construção. Algumas funcionalidades ainda serão melhora
 
 ## Observações
 
-Apesar de não estar muito bom, pois não achamos qual widget para trazer os campos carregados e permitir alteração dos mesmos campos. Mas para quem só teve 5 aulas, fizemos milagre! kkkkk
+Para quem só teve 5 aulas, fizemos milagre! kkkkk
 Ah, tbm há um menu para desestressar jogando dados! :)
 
 ## Horas de desenvolvimento
 
-60 horas de desenvolvimento na sofrência!
+90 horas de desenvolvimento na sofrência!
